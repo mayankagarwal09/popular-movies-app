@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,37 +10,129 @@
             type="com.example.popularmovies.models.Movie" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         tools:context=".fragments.MovieDetailFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Movie Details" />
 
         <ImageView
             android:id="@+id/movie_detail_image"
             imageUrl="@{movie.posterPath}"
-            android:layout_width="100dp"
-            android:layout_height="200dp"
+            android:layout_width="250dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toStartOf="@id/release_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/movie_detail_overview"
-            android:layout_width="wrap_content"
+            android:id="@+id/release_label"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:maxLines="2"
+            android:text="Release Date"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/release_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movie_detail_image"
+            app:layout_constraintTop_toTopOf="@id/movie_detail_image"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/release_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{movie.releaseDate}"
+            app:layout_constraintBottom_toTopOf="@id/divider1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/release_label"
+            app:layout_constraintTop_toBottomOf="@id/release_label" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/rating_label"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/rating_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Rating"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/rating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/release_label"
+            app:layout_constraintTop_toBottomOf="@id/release_date"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(movie.rating)}"
+            app:layout_constraintBottom_toTopOf="@id/divider2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/release_label"
+            app:layout_constraintTop_toBottomOf="@id/rating_label" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/popularity_label"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/popularity_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Popularity"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/popularity_score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/release_label"
+            app:layout_constraintTop_toBottomOf="@id/rating"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/popularity_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(movie.popularity)}"
+            app:layout_constraintBottom_toBottomOf="@id/movie_detail_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/release_label"
+            app:layout_constraintTop_toBottomOf="@id/popularity_label" />
+
+        <TextView
+            android:id="@+id/overview_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Overview"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/movie_detail_overview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_detail_image" />
+
+        <TextView
+            android:id="@+id/movie_detail_overview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
             android:text="@{movie.overview}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/movie_detail_image"
+            app:layout_constraintTop_toBottomOf="@id/overview_label"
             tools:text="Movie Overview long " />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
