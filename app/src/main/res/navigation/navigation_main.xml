@@ -14,6 +14,10 @@
 
     <fragment
         android:id="@+id/movie_detail_dest"
-        android:name="com.example.popularmovies.fragments.MovieDetailFragment" />
+        android:name="com.example.popularmovies.fragments.MovieDetailFragment">
+        <argument
+            android:name="movie"
+            app:argType="com.example.popularmovies.models.Movie" />
+    </fragment>
 
 </navigation>

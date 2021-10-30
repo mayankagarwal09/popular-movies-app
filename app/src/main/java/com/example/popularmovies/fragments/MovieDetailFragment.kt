@@ -5,14 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.popularmovies.R
+import androidx.navigation.fragment.navArgs
+import com.example.popularmovies.databinding.FragmentMovieDetailBinding
 
 class MovieDetailFragment : Fragment() {
+    private lateinit var binding: FragmentMovieDetailBinding
+    val args: MovieDetailFragmentArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_detail, container, false)
+        binding = FragmentMovieDetailBinding.inflate(layoutInflater, container, false)
+
+        binding.movie = args.movie
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        return binding.root
     }
 }

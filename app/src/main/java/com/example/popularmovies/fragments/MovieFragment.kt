@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.popularmovies.R
 import com.example.popularmovies.adapters.MovieAdapter
 import com.example.popularmovies.databinding.FragmentMovieBinding
 import com.example.popularmovies.models.Movie
@@ -27,7 +26,7 @@ class MovieFragment : Fragment() {
         binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
 
         val adapter = MovieAdapter(OnClickListener {
-            findNavController().navigate(R.id.action_movie_dest_to_movie_detail_dest)
+            findNavController().navigate(MovieFragmentDirections.actionMovieDestToMovieDetailDest(it))
         })
         binding.movieRecyclerView.adapter = adapter
 
